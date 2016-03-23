@@ -1,0 +1,13 @@
+--cpu Cortex-M0+
+".\objects\main.o"
+".\objects\clock.o"
+".\objects\gpio.o"
+".\objects\trp868_uart.o"
+".\objects\hr_timer.o"
+".\objects\delay.o"
+"C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Lib\ARM\arm_cortexM0l_math.lib"
+".\objects\startup_samd20.o"
+".\objects\system_samd20.o"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Merilnik_gibanja.map" -o .\Objects\Merilnik_gibanja.axf
