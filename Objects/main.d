@@ -55,12 +55,11 @@
 .\objects\main.o: C:\Keil_v5\ARM\PACK\Keil\SAMD20_DFP\1.1.0\Device\SAMD20\Include\instance/wdt.h
 .\objects\main.o: C:\Keil_v5\ARM\PACK\Keil\SAMD20_DFP\1.1.0\Device\SAMD20\Include\pio/samd20j18.h
 .\objects\main.o: main.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: types.h
 .\objects\main.o: clock.h
 .\objects\main.o: gpio.h
-.\objects\main.o: types.h
 .\objects\main.o: trp868_uart.h
 .\objects\main.o: hr_timer.h
-.\objects\main.o: Delay.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

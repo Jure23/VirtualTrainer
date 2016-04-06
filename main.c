@@ -4,92 +4,66 @@
 #include "gpio.h"
 #include "trp868_uart.h"
 #include "hr_timer.h"
-#include "Delay.h"
 
 #include <stdio.h> 
 #include <string.h>
 #include <math.h>
 
-/**************** private functions prototypes ***********/
 
-void calc_pulse (void);
-void EIC_Handler(void);
-/*********************************************************/
+volatile uint32_t msTicks;
 
 /**************** data structures ************************/
 
-struct heart_rate
-{
-	UINT16 pulse;
-	UINT16 timer_new_val;
-	UINT16 timer_old_val;
-}; 
-struct heart_rate hr_data;
+
 /*********************************************************/
 
+/**************** Delay function *************************/
+void SysTick_Handler(void)
+{
+	msTicks++;
+}
+
+static void Delay (UINT32 dlyTicks)
+{
+	uint32_t curTicks;
+	
+	curTicks = msTicks;
+	while ((msTicks - curTicks) < dlyTicks);
+}
+
+/*********************************************************/
 /**************** IRQ_Handlers ***************************/
 
 void EIC_Handler(void)
 {
 	NVIC_DisableIRQ(4);
-	hr_data.timer_new_val = TC0->COUNT16.COUNT.reg;
-	TC0->COUNT16.CTRLA.reg = TC_CTRLA_SWRST;
-
-	TC0->COUNT16.CTRLA.reg = TC_CTRLA_ENABLE;
 	
-	//start_hr_timer();
 	EIC->INTFLAG.reg = EIC_INTFLAG_EXTINT14;
-	//TC0->COUNT16.COUNT.reg = 0;
 	NVIC_EnableIRQ(4);
 }
 /*********************************************************/
 
 /**************** private functions **********************/
 
-void calc_pulse (void)
-{
-	UINT16 dif;
-	double time;
-	double pulse;
-	dif = hr_data.timer_new_val - hr_data.timer_old_val;
-	time = (dif / 39);
-	pulse = (60 / time);
-	hr_data.pulse = round(pulse);
-	
-	hr_data.timer_old_val = hr_data.timer_new_val;
-}
+
 /*********************************************************/
 
 
 int main(void)
 {
 	SystemCoreClockUpdate();
+	main_clock_init();
 	SysTick_Config(SystemCoreClock/1000);
 	
-	/* config RF module to send data */
-	trp868_init();
+	PORT->Group[1].DIRSET.reg = PORT_PB00;
 	
-	/* config HR module */
-	hr_pin_config();
-	tc0_init();
-	//TC0->COUNT16.CTRLA.reg |= TC_CTRLA_ENABLE | TC_CTRLA_MODE_COUNT16 | TC_CTRLA_PRESCALER_DIV256 | TC_CTRLA_PRESCSYNC_PRESC;
-
-	
-	/* enable EIC interrupts */
-	NVIC_EnableIRQ(4);
-
 	while(1)
 	{
 		
-		if (hr_data.timer_new_val != hr_data.timer_old_val)
-		{
-			//char out_buff[100];
-			//UINT16 lenght;
-			calc_pulse();
-			//memset(out_buff, 0, 100);
-			//snprintf(out_buff, 100, "%d BPM \n", hr_data.pulse);
-			//trp868_write (out_buff,  strlen(out_buff) );
-		}
+		//Delay(1000);
+		PORT->Group[1].OUTTGL.reg = PORT_PB00;
+		//Delay(1000);
+		
 
 
 		/* user loop */

@@ -4,7 +4,6 @@
 ".\objects\gpio.o"
 ".\objects\trp868_uart.o"
 ".\objects\hr_timer.o"
-".\objects\delay.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Lib\ARM\arm_cortexM0l_math.lib"
 ".\objects\startup_samd20.o"
 ".\objects\system_samd20.o"

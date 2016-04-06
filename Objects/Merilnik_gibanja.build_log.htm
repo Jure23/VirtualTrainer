@@ -17,43 +17,42 @@ Library Manager: ArmAr.exe V5.06 update 1 (build 61)
 Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
 CPU DLL:         SARMCM3.DLL V5.17
 Dialog DLL:      DARMCM1.DLL V1.12.0.0
-Target DLL:      UL2CM3.DLL V1.156.1.0
+Target DLL:      CMSIS_AGDI.dll V1.23.1.0
 Dialog DLL:      TARMCM1.DLL V1.9.0.0
  
 <h2>Project:</h2>
 W:\Trener_projekt_KeiluVision\Merilnik_gibanja.uvprojx
-Project File Date:  03/16/2016
+Project File Date:  04/06/2016
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'SamD20J18'
-compiling clock.c...
 compiling gpio.c...
+gpio.c(114): warning:  #1-D: last line of file ends without a newline
+  }
+gpio.c: 1 warning, 0 errors
+compiling clock.c...
 compiling main.c...
-hr_timer.h(15): warning:  #1-D: last line of file ends without a newline
+main.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif /*_MAIN_H_*/
+hr_timer.h(17): warning:  #1-D: last line of file ends without a newline
   #endif /* __HR_TIMER_H__ */
-main.c(33): warning:  #188-D: enumerated type mixed with another type
+main.c(39): warning:  #188-D: enumerated type mixed with another type
   	NVIC_DisableIRQ(4);
 main.c(42): warning:  #188-D: enumerated type mixed with another type
   	NVIC_EnableIRQ(4);
-main.c(56): warning:  #223-D: function "round" declared implicitly
-  	hr_data.pulse = round(pulse);
-main.c(78): warning:  #188-D: enumerated type mixed with another type
-  	NVIC_EnableIRQ(4);
-main.c: 5 warnings, 0 errors
-compiling trp868_uart.c...
-assembling startup_SAMD20.s...
-compiling delay.c...
-delay.c(13): warning:  #177-D: function "Delay" was declared but never referenced
+main.c(26): warning:  #177-D: function "Delay" was declared but never referenced
   static void Delay (UINT32 dlyTicks)
-delay.c: 1 warning, 0 errors
+main.c: 5 warnings, 0 errors
+assembling startup_SAMD20.s...
+compiling trp868_uart.c...
 compiling hr_timer.c...
-hr_timer.h(15): warning:  #1-D: last line of file ends without a newline
+hr_timer.h(17): warning:  #1-D: last line of file ends without a newline
   #endif /* __HR_TIMER_H__ */
 hr_timer.c: 1 warning, 0 errors
 compiling system_samd20.c...
 linking...
-Program Size: Code=4248 RO-data=324 RW-data=16 ZI-data=608  
+Program Size: Code=1128 RO-data=196 RW-data=8 ZI-data=608  
 ".\Objects\Merilnik_gibanja.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -85,9 +84,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:4.3.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device\SAMD20\Source\system_samd20.c
       Source file:   Device\SAMD20\Source\ARM\startup_SAMD20.s
-Build Time Elapsed:  00:00:03
+      Source file:   Device\SAMD20\Source\system_samd20.c
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

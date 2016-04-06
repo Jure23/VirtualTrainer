@@ -5,13 +5,6 @@
 
 /************************* data structures ******************/
 
-struct heart_rate
-{
-	UINT16 pulse;
-	UINT16 timer_new_val;
-	UINT16 timer_old_val;
-}; 
-struct heart_rate hr_data;
 
 /************************************************************/
 

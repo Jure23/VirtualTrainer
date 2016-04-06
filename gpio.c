@@ -112,6 +112,3 @@ BOOL set_pin_state (UINT8 port, UINT8 pin, UINT8 state)
 	}
 	return TRUE;
 }
-
-
-
